@@ -30,6 +30,7 @@ import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.PomInfo;
 import se.trixon.almond.util.SystemHelper;
 import se.trixon.almond.util.Xlog;
+import se.trixon.mapo.ui.MainApp;
 
 /**
  *
@@ -99,7 +100,7 @@ public class Mapo {
         }
 
         new Thread(() -> {
-            //MainApp.main(sArgs);
+            MainApp.main(sArgs);
         }).start();
     }
 
