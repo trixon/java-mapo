@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.collections.ObservableMap;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -29,6 +30,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import se.trixon.almond.util.SystemHelper;
 import se.trixon.almond.util.fx.AlmondFx;
+import se.trixon.mapo.ui.tabs.GMapsFXTab;
 
 /**
  *
@@ -42,6 +44,7 @@ public class MainApp extends Application {
     private final ResourceBundle mBundle = SystemHelper.getBundle(MainApp.class, "Bundle");
     private BorderPane mRoot;
     private Stage mStage;
+    private TabPane mTabPane = new TabPane();
 
     /**
      * @param args the command line arguments
@@ -60,15 +63,19 @@ public class MainApp extends Application {
         postInit();
         initAccelerators();
         initListeners();
-        mStage.setTitle(APP_TITLE);
+        mStage.setTitle(APP_TITLE + " - a collection of map renderers for Java desktop applications");
         mStage.show();
     }
 
     private void createUI() {
         mRoot = new BorderPane();
         Scene scene = new Scene(mRoot);
-
+        mRoot.setCenter(mTabPane);
         mStage.setScene(scene);
+
+        mTabPane.getTabs().addAll(
+                new GMapsFXTab()
+        );
     }
 
     private void initAccelerators() {
