@@ -38,6 +38,8 @@ import se.trixon.mapo.ui.MainApp;
  */
 public class Mapo {
 
+    public static final double MYLAT = 57.66;
+    public static final double MYLON = 12.0;
     private static String[] sArgs;
     private static final ResourceBundle sBundle = SystemHelper.getBundle(Mapo.class, "Bundle");
     private static Options sOptions;

@@ -27,6 +27,7 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.lynden.gmapsfx.shapes.Circle;
 import javafx.scene.control.Tab;
+import se.trixon.mapo.Mapo;
 import static se.trixon.mapo.ui.MainApp.APP_TITLE;
 
 /**
@@ -46,7 +47,7 @@ public class GMapsFXTab extends Tab implements MapComponentInitializedListener {
 
     @Override
     public void mapInitialized() {
-        LatLong infoWindowLocation = new LatLong(57.66, 12);
+        LatLong infoWindowLocation = new LatLong(Mapo.MYLAT, Mapo.MYLON);
 
         mMapOptions = new MapOptions()
                 .center(infoWindowLocation)

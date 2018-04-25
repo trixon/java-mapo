@@ -31,6 +31,7 @@ import javafx.stage.WindowEvent;
 import se.trixon.almond.util.SystemHelper;
 import se.trixon.almond.util.fx.AlmondFx;
 import se.trixon.mapo.ui.tabs.GMapsFXTab;
+import se.trixon.mapo.ui.tabs.JXMapViewer2;
 
 /**
  *
@@ -74,7 +75,8 @@ public class MainApp extends Application {
         mStage.setScene(scene);
 
         mTabPane.getTabs().addAll(
-                new GMapsFXTab()
+                new GMapsFXTab(),
+                new JXMapViewer2()
         );
     }
 
