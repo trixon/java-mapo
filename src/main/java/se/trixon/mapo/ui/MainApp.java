@@ -15,7 +15,6 @@
  */
 package se.trixon.mapo.ui;
 
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.collections.ObservableMap;
@@ -28,8 +27,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import se.trixon.almond.util.SystemHelper;
-import se.trixon.almond.util.fx.AlmondFx;
 import se.trixon.mapo.ui.tabs.GMapsFXTab;
 import se.trixon.mapo.ui.tabs.GluonMapsTab;
 import se.trixon.mapo.ui.tabs.JXMapViewer2;
@@ -42,8 +39,6 @@ public class MainApp extends Application {
 
     public static final String APP_TITLE = "Mapo";
     private static final Logger LOGGER = Logger.getLogger(MainApp.class.getName());
-    private final AlmondFx mAlmondFX = AlmondFx.getInstance();
-    private final ResourceBundle mBundle = SystemHelper.getBundle(MainApp.class, "Bundle");
     private BorderPane mRoot;
     private Stage mStage;
     private TabPane mTabPane = new TabPane();
@@ -60,18 +55,15 @@ public class MainApp extends Application {
         mStage = primaryStage;
         primaryStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("majincline-globe-1024px.png")));
 
-        mAlmondFX.addStageWatcher(primaryStage, MainApp.class);
         createUI();
-        postInit();
         initAccelerators();
-        initListeners();
         mStage.setTitle(APP_TITLE + " - a collection of map renderers for Java desktop applications");
         mStage.show();
     }
 
     private void createUI() {
         mRoot = new BorderPane();
-        Scene scene = new Scene(mRoot);
+        Scene scene = new Scene(mRoot, 600, 600);
         mRoot.setCenter(mTabPane);
         mStage.setScene(scene);
 
@@ -92,11 +84,5 @@ public class MainApp extends Application {
         accelerators.put(new KeyCodeCombination(KeyCode.ESCAPE), (Runnable) () -> {
             mStage.fireEvent(new WindowEvent(mStage, WindowEvent.WINDOW_CLOSE_REQUEST));
         });
-    }
-
-    private void initListeners() {
-    }
-
-    private void postInit() {
     }
 }
