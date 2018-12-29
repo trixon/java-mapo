@@ -28,7 +28,6 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.lynden.gmapsfx.shapes.Circle;
 import javafx.scene.control.Tab;
 import se.trixon.mapo.Mapo;
-import static se.trixon.mapo.ui.MainApp.APP_TITLE;
 
 /**
  *
@@ -57,7 +56,6 @@ public class GMapsFXTab extends Tab implements MapComponentInitializedListener {
                 .zoom(15);
 
         GoogleMap map = mMapView.createMap(mMapOptions);
-        mMapView.setKey(APP_TITLE);
 
         Circle circle = new Circle();
         circle.setCenter(infoWindowLocation);
