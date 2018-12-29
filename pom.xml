@@ -57,6 +57,12 @@
             <artifactId>maps</artifactId>
             <version>1.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.sothawo</groupId>
+            <artifactId>mapjfx</artifactId>
+            <version>1.22.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
