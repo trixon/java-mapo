@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Patrik Karlström.
+ * Copyright 2019 Patrik Karlström.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,12 @@
  */
 package se.trixon.mapo.ui.tabs;
 
-import com.gluonhq.maps.MapView;
+import com.sothawo.mapjfx.Coordinate;
+import com.sothawo.mapjfx.MapType;
+import com.sothawo.mapjfx.MapView;
+import com.sothawo.mapjfx.event.MapViewEvent;
 import javafx.scene.control.Tab;
+import se.trixon.mapo.Mapo;
 
 /**
  *
@@ -24,10 +28,34 @@ import javafx.scene.control.Tab;
  */
 public class MapJfx extends Tab {
 
+    private final Coordinate mCoordinate = new Coordinate(Mapo.MYLAT, Mapo.MYLON);
+    private MapView mMapView;
+
     public MapJfx() {
         setText("MapJfx");
-        MapView mapView = new MapView();
-        setContent(mapView);
+        mMapView = new MapView();
+        mMapView.initializedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                afterMapIsInitialized();
+            }
+        });
+        //mMapView.setCustomMapviewCssURL(getClass().getResource("/custom_mapview.css"));
+        setupEventHandlers();
+
+        mMapView.initialize();
+        setContent(mMapView);
     }
 
+    private void afterMapIsInitialized() {
+        mMapView.setMapType(MapType.OSM);
+        mMapView.setZoom(12);
+        mMapView.setCenter(mCoordinate);
+    }
+
+    private void setupEventHandlers() {
+        mMapView.addEventHandler(MapViewEvent.MAP_EXTENT, event -> {
+            event.consume();
+            mMapView.setExtent(event.getExtent());
+        });
+    }
 }

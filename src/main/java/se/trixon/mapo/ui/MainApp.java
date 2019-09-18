@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Patrik Karlström.
+ * Copyright 2019 Patrik Karlström.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ public class MainApp extends Application {
     private static final Logger LOGGER = Logger.getLogger(MainApp.class.getName());
     private BorderPane mRoot;
     private Stage mStage;
-    private TabPane mTabPane = new TabPane();
+    private final TabPane mTabPane = new TabPane();
 
     /**
      * @param args the command line arguments
@@ -69,10 +69,10 @@ public class MainApp extends Application {
         mStage.setScene(scene);
 
         mTabPane.getTabs().addAll(
+                new MapJfx(),
                 new GluonMapsTab(),
                 new GMapsFXTab(),
-                new JXMapViewer2(),
-                new MapJfx()
+                new JXMapViewer2()
         );
     }
 
