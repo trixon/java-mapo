@@ -62,6 +62,11 @@
             <artifactId>mapjfx</artifactId>
             <version>1.27.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.pcmehlitz</groupId>
+            <artifactId>worldwind-pcm</artifactId>
+            <version>2.1.0.187</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

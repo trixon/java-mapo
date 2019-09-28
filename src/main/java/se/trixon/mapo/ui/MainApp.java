@@ -31,6 +31,7 @@ import se.trixon.mapo.ui.tabs.GMapsFXTab;
 import se.trixon.mapo.ui.tabs.GluonMapsTab;
 import se.trixon.mapo.ui.tabs.JXMapViewer2;
 import se.trixon.mapo.ui.tabs.MapJfx;
+import se.trixon.mapo.ui.tabs.WorldWind;
 
 /**
  *
@@ -69,6 +70,7 @@ public class MainApp extends Application {
         mStage.setScene(scene);
 
         mTabPane.getTabs().addAll(
+                new WorldWind(),
                 new MapJfx(),
                 new GluonMapsTab(),
                 new GMapsFXTab(),
