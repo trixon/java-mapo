@@ -17,10 +17,7 @@ package se.trixon.mapo.ui.tabs;
 
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
-import com.gluonhq.maps.demo.PoiLayer;
 import javafx.scene.control.Tab;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import se.trixon.mapo.Mapo;
 
 /**
@@ -35,9 +32,9 @@ public class GluonMapsTab extends Tab {
         setContent(mapView);
 
         MapPoint mapPoint = new MapPoint(Mapo.MYLAT, Mapo.MYLON);
-        PoiLayer poiLayer = new PoiLayer();
-        poiLayer.addPoint(mapPoint, new Circle(8, Color.RED));
-        mapView.addLayer(poiLayer);
+//        PoiLayer poiLayer = new PoiLayer();
+//        poiLayer.addPoint(mapPoint, new Circle(8, Color.RED));
+//        mapView.addLayer(poiLayer);
         mapView.setZoom(3);
 
         mapView.flyTo(1., mapPoint, 2.);
